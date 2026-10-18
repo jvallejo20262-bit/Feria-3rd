@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5ef">
+  <meta name="description" content="Descubre expositores, actividades y novedades de Feria 3.">
+  <title>Feria 3 — Ideas que se encuentran</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f5ef;
+      --ink: #192622;
+      --muted: #65716a;
+      --line: #d9ded5;
+      --green: #174e40;
+      --lime: #d5f15b;
+      --coral: #f0785d;
+      --white: #fffefa;
+      font-family: Manrope, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    .shell { width: min(1200px, calc(100% - 64px)); margin-inline: auto; }
+
+    .topbar { height: 76px; display: flex; align-items: center; border-bottom: 1px solid var(--line); }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 800; letter-spacing: 0; }
+    .brand-mark { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; color: var(--lime); background: var(--green); font-size: 13px; }
+    .nav { display: flex; align-items: center; gap: 30px; color: #425049; font-size: 13px; font-weight: 700; }
+    .nav a:hover { color: var(--green); }
+    .saved-link { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 4px; padding: 10px 13px; background: transparent; font-size: 12px; font-weight: 800; cursor: pointer; }
+    .saved-link:hover { border-color: var(--green); }
+    .saved-count { min-width: 18px; height: 18px; display: grid; place-items: center; border-radius: 50%; background: var(--lime); font-size: 10px; }
+
+    .hero { padding: 49px 0 46px; display: grid; grid-template-columns: 1fr 0.88fr; gap: 54px; align-items: center; }
+    .eyebrow, .section-kicker { margin: 0; color: var(--green); font: 500 10px/1.4 'DM Mono', monospace; letter-spacing: 0; text-transform: uppercase; }
+    .edition { display: inline-flex; align-items: center; gap: 8px; padding: 8px 11px; border: 1px solid #c5d1c4; border-radius: 3px; background: #e9eee2; }
+    .edition-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
+    h1 { max-width: 630px; margin: 20px 0 15px; font-size: clamp(46px, 6.2vw, 78px); line-height: 0.99; letter-spacing: -3px; font-weight: 800; }
+    h1 span { color: var(--green); }
+    .hero-copy { max-width: 480px; color: var(--muted); font-size: 15px; line-height: 1.75; }
+    .hero-actions { margin-top: 27px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .button { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 17px; border: 1px solid var(--green); border-radius: 3px; background: var(--green); color: white; font-size: 12px; font-weight: 800; cursor: pointer; }
+    .button:hover { background: #0f3d32; }
+    .button.secondary { background: transparent; color: var(--green); }
+    .button.secondary:hover { background: #e8ece3; }
+    .hero-visual { position: relative; min-height: 342px; overflow: hidden; background: #d8e0d1; }
+    .hero-visual img { width: 100%; height: 342px; display: block; object-fit: cover; }
+    .visual-caption { position: absolute; right: 14px; bottom: 14px; padding: 8px 10px; background: var(--lime); color: var(--ink); font: 500 10px 'DM Mono', monospace; text-transform: uppercase; }
+    .hero-stamp { position: absolute; top: 16px; left: 16px; width: 66px; height: 66px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.7); border-radius: 50%; color: white; background: rgba(23,78,64,.78); font: 500 10px/1.4 'DM Mono', monospace; text-align: center; text-transform: uppercase; }
+
+    .info-strip { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--line); }
+    .info-item { min-height: 74px; display: flex; align-items: center; gap: 12px; padding: 13px 22px; border-right: 1px solid var(--line); }
+    .info-item:first-child { padding-left: 0; }
+    .info-item:last-child { border: 0; }
+    .info-icon { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: var(--lime); color: var(--green); font-size: 16px; }
+    .info-label { display: block; margin-bottom: 3px; color: var(--muted); font: 400 9px 'DM Mono', monospace; text-transform: uppercase; }
+    .info-value { font-size: 12px; font-weight: 800; }
+
+    .discover { padding: 66px 0 82px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; }
+    h2 { margin: 9px 0 0; font-size: 36px; line-height: 1.1; letter-spacing: -1.3px; }
+    .result-count { color: var(--muted); font: 400 11px 'DM Mono', monospace; }
+    .toolbar { margin: 25px 0 21px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 7px; }
+    .filter { min-height: 34px; padding: 0 13px; border: 1px solid var(--line); border-radius: 2px; background: transparent; color: #4e5a53; font-size: 11px; font-weight: 700; cursor: pointer; }
+    .filter:hover, .filter[aria-pressed="true"] { border-color: var(--green); background: var(--green); color: white; }
+    .search { width: min(245px, 100%); height: 38px; display: flex; align-items: center; gap: 8px; padding: 0 11px; border: 1px solid var(--line); background: var(--white); }
+    .search svg { flex: none; color: var(--muted); }
+    .search input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 11px; }
+    .search input::placeholder { color: #89928b; }
+    .vendor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .vendor { min-width: 0; border: 1px solid var(--line); background: var(--white); transition: border-color .18s ease, transform .18s ease; }
+    .vendor:hover { transform: translateY(-3px); border-color: #9dad9d; }
+    .vendor-image { position: relative; height: 188px; overflow: hidden; background: #e5e7df; }
+    .vendor-image img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .35s ease; }
+    .vendor:hover .vendor-image img { transform: scale(1.035); }
+    .category-tag { position: absolute; left: 11px; bottom: 11px; padding: 6px 8px; background: var(--lime); color: var(--ink); font: 500 9px 'DM Mono', monospace; text-transform: uppercase; }
+    .favorite { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; display: grid; place-items: center; border: 0; border-radius: 50%; background: rgba(255,254,250,.94); cursor: pointer; }
+    .favorite svg { fill: none; stroke: var(--ink); }
+    .favorite[aria-pressed="true"] svg { fill: var(--coral); stroke: var(--coral); }
+    .vendor-body { padding: 15px 15px 16px; }
+    .vendor-type { margin: 0; color: var(--muted); font: 400 9px 'DM Mono', monospace; text-transform: uppercase; }
+    .vendor h3 { margin: 7px 0 5px; font-size: 17px; line-height: 1.25; letter-spacing: -.3px; }
+    .vendor p.description { min-height: 36px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.65; }
+    .vendor-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 14px; padding-top: 12px; border-top: 1px solid #e9ebe5; color: #59655d; font: 400 9px 'DM Mono', monospace; text-transform: uppercase; }
+    .booth { color: var(--green); font-weight: 500; }
+    .empty-state { grid-column: 1 / -1; padding: 38px 15px; border: 1px dashed #b8c2b7; color: var(--muted); text-align: center; font-size: 13px; }
+
+    .closing { padding: 28px 0; background: var(--green); color: white; }
+    .closing-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .closing strong { display: block; font-size: 18px; }
+    .closing p { margin: 5px 0 0; color: #c8d9d1; font-size: 11px; }
+    .closing .button { border-color: var(--lime); background: var(--lime); color: var(--ink); }
+    footer { padding: 18px 0; color: var(--muted); font: 400 9px 'DM Mono', monospace; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 36px, 560px); }
+      .topbar { height: 64px; }
+      .nav { display: none; }
+      .saved-link { padding: 8px 10px; }
+      .hero { padding: 37px 0 32px; grid-template-columns: 1fr; gap: 24px; }
+      h1 { font-size: clamp(47px, 12vw, 68px); letter-spacing: -2px; }
+      .hero-visual, .hero-visual img { height: 265px; min-height: 265px; }
+      .info-strip { grid-template-columns: 1fr; }
+      .info-item, .info-item:first-child { min-height: 62px; padding: 10px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .info-item:last-child { border-bottom: 0; }
+      .discover { padding: 48px 0 56px; }
+      .section-head { align-items: start; }
+      h2 { font-size: 30px; }
+      .toolbar { align-items: stretch; flex-direction: column-reverse; }
+      .search { width: 100%; }
+      .vendor-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .vendor-image { height: 145px; }
+      .vendor-body { padding: 12px; }
+      .vendor h3 { font-size: 14px; }
+      .vendor p.description { min-height: 54px; font-size: 10px; }
+      .vendor-foot { font-size: 8px; }
+      .closing-inner { align-items: start; flex-direction: column; }
+    }
+
+    @media (max-width: 400px) {
+      .vendor-grid { grid-template-columns: 1fr; }
+      .vendor-image { height: 190px; }
+      .vendor p.description { min-height: 0; }
+      .footer-inner { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#inicio" aria-label="Feria 3, inicio"><span class="brand-mark">F3</span> FERIA 3</a>
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#expositores">Expositores</a>
+        <a href="#informacion">La feria</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button class="saved-link" id="show-saved" type="button" aria-pressed="false">
+        <span>Mis favoritos</span><span class="saved-count" id="saved-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="shell hero" id="informacion">
+      <div>
+        <p class="eyebrow edition"><span class="edition-dot"></span> Próxima edición en preparación</p>
+        <h1>Ideas que<br><span>se encuentran.</span></h1>
+        <p class="hero-copy">Un punto de encuentro para descubrir proyectos independientes, objetos con historia y personas que hacen las cosas distinto.</p>
+        <div class="hero-actions">
+          <a class="button" href="#expositores">Explorar expositores <span aria-hidden="true">&#8594;</span></a>
+          <a class="button secondary" href="#contacto">Quiero participar</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1100&q=85" alt="Visitantes recorren una feria de diseño y proyectos creativos">
+        <span class="hero-stamp">hecho<br>con ideas</span>
+        <span class="visual-caption">Diseño · comunidad · encuentro</span>
+      </div>
+    </section>
+
+    <section class="shell info-strip" aria-label="Información de la próxima edición">
+      <div class="info-item"><span class="info-icon" aria-hidden="true">&#9716;</span><span><span class="info-label">Fecha</span><span class="info-value">Por anunciar</span></span></div>
+      <div class="info-item"><span class="info-icon" aria-hidden="true">&#9678;</span><span><span class="info-label">Lugar</span><span class="info-value">Por anunciar</span></span></div>
+      <div class="info-item"><span class="info-icon" aria-hidden="true">&#10022;</span><span><span class="info-label">Entrada</span><span class="info-value">Próximamente</span></span></div>
+    </section>
+
+    <section class="shell discover" id="expositores">
+      <div class="section-head">
+        <div><p class="section-kicker">La gente detrás de las ideas</p><h2>Conoce a los expositores</h2></div>
+        <span class="result-count" id="result-count" aria-live="polite"></span>
+      </div>
+      <div class="toolbar">
+        <div class="filters" role="group" aria-label="Filtrar expositores por categoría">
+          <button class="filter" type="button" data-category="Todos" aria-pressed="true">Todos</button>
+          <button class="filter" type="button" data-category="Diseño" aria-pressed="false">Diseño</button>
+          <button class="filter" type="button" data-category="Gastronomía" aria-pressed="false">Gastronomía</button>
+          <button class="filter" type="button" data-category="Arte" aria-pressed="false">Arte</button>
+          <button class="filter" type="button" data-category="Bienestar" aria-pressed="false">Bienestar</button>
+        </div>
+        <label class="search">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <input id="search-input" type="search" placeholder="Buscar un proyecto..." aria-label="Buscar expositores">
+        </label>
+      </div>
+      <div class="vendor-grid" id="vendor-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="closing" id="contacto">
+      <div class="shell closing-inner">
+        <div><strong>¿Tienes un proyecto para compartir?</strong><p>Estamos preparando la próxima edición de Feria 3.</p></div>
+        <a class="button" href="mailto:hola@feria3.com?subject=Quiero%20participar%20en%20Feria%203">Escríbenos <span aria-hidden="true">&#8599;</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell footer-inner"><span>FERIA 3 · Una feria de ideas independientes</span><span>La próxima edición se anuncia pronto</span></div></footer>
+
+  <script>
+    const vendors = [
+      { id: 'surco', name: 'Surco Cerámica', category: 'Diseño', detail: 'Objetos cotidianos hechos a mano, pieza por pieza.', booth: 'Taller y hogar', image: 'photo-1493106641515-6b5631de4bb9' },
+      { id: 'grano', name: 'Grano de Barrio', category: 'Gastronomía', detail: 'Café de origen y pan recién hecho para compartir.', booth: 'Café y cocina', image: 'photo-1445116572660-236099ec97a0' },
+      { id: 'tinta', name: 'Tinta Fresca', category: 'Arte', detail: 'Ilustración, risografía y ediciones impresas en casa.', booth: 'Papel y gráfica', image: 'photo-1455390582262-044c8202d3d1' },
+      { id: 'lumbre', name: 'Lumbre Botánica', category: 'Bienestar', detail: 'Plantas, aromas y pequeños rituales para todos los días.', booth: 'Cuidado y plantas', image: 'photo-1485955900006-10f4d324d411' },
+      { id: 'hilvan', name: 'Hilván Estudio', category: 'Diseño', detail: 'Textiles recuperados convertidos en piezas irrepetibles.', booth: 'Ropa y accesorios', image: 'photo-1558618666-fcd25c85cd64' },
+      { id: 'cuchara', name: 'Buena Cuchara', category: 'Gastronomía', detail: 'Conservas de temporada y sabores para llevar a casa.', booth: 'Café y cocina', image: 'photo-1476224203421-9ac39bcb3327' }
+    ];
+
+    const grid = document.querySelector('#vendor-grid');
+    const searchInput = document.querySelector('#search-input');
+    const savedButton = document.querySelector('#show-saved');
+    const savedCount = document.querySelector('#saved-count');
+    const countLabel = document.querySelector('#result-count');
+    let selectedCategory = 'Todos';
+    let savedOnly = false;
+    const favorites = new Set();
+
+    function renderVendors() {
+      const query = searchInput.value.trim().toLocaleLowerCase('es');
+      const visible = vendors.filter((vendor) => {
+        const matchesCategory = selectedCategory === 'Todos' || vendor.category === selectedCategory;
+        const matchesQuery = `${vendor.name} ${vendor.category} ${vendor.detail}`.toLocaleLowerCase('es').includes(query);
+        return matchesCategory && matchesQuery && (!savedOnly || favorites.has(vendor.id));
+      });
+
+      countLabel.textContent = `${visible.length} ${visible.length === 1 ? 'proyecto' : 'proyectos'}`;
+      if (visible.length === 0) {
+        grid.innerHTML = '<p class="empty-state">No encontramos proyectos con esos filtros. Prueba con otra búsqueda.</p>';
+        return;
+      }
+
+      grid.innerHTML = visible.map((vendor) => `
+        <article class="vendor">
+          <div class="vendor-image">
+            <img src="https://images.unsplash.com/${vendor.image}?auto=format&fit=crop&w=700&q=80" alt="Proyecto ${vendor.name}" loading="lazy">
+            <span class="category-tag">${vendor.category}</span>
+            <button class="favorite" type="button" data-favorite="${vendor.id}" aria-label="${favorites.has(vendor.id) ? 'Quitar de' : 'Añadir a'} favoritos: ${vendor.name}" aria-pressed="${favorites.has(vendor.id)}">
+              <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="vendor-body">
+            <p class="vendor-type">${vendor.category}</p>
+            <h3>${vendor.name}</h3>
+            <p class="description">${vendor.detail}</p>
+            <div class="vendor-foot"><span>${vendor.booth}</span><span class="booth">F3 / ${String(vendors.indexOf(vendor) + 1).padStart(2, '0')}</span></div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    document.querySelector('.filters').addEventListener('click', (event) => {
+      const button = event.target.closest('[data-category]');
+      if (!button) return;
+      selectedCategory = button.dataset.category;
+      document.querySelectorAll('.filter').forEach((filter) => filter.setAttribute('aria-pressed', String(filter === button)));
+      renderVendors();
+    });
+
+    searchInput.addEventListener('input', renderVendors);
+    savedButton.addEventListener('click', () => {
+      savedOnly = !savedOnly;
+      savedButton.setAttribute('aria-pressed', String(savedOnly));
+      renderVendors();
+      document.querySelector('#expositores').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    grid.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-favorite]');
+      if (!button) return;
+      const id = button.dataset.favorite;
+      favorites.has(id) ? favorites.delete(id) : favorites.add(id);
+      savedCount.textContent = String(favorites.size);
+      renderVendors();
+    });
+
+    renderVendors();
+  </script>
+</body>
+</html>
